@@ -10,6 +10,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: "Debug: show git info and files"
+        run: |
+          echo "=== Debug: env ==="
+          env | sort
+          echo "=== Debug: git status ==="
+          git status --porcelain --branch || true
+          echo "=== Debug: git branch ==="
+          git branch --show-current || true
+          echo "=== Debug: list repo root ==="
+          ls -la
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
