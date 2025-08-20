@@ -57,9 +57,9 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 2vh 2vw;
+      padding: 1vh 2vw;
       margin: auto;
-      max-width: 80%;
+      max-width: 90%;
     }
     .cols { display: grid; grid-template-columns: 1fr; gap: 14px; align-items: center; }
     @media (min-width: 900px) { .cols { grid-template-columns: 1fr 1fr; } }
@@ -85,7 +85,7 @@
     }
     .theme-toggle:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
     img.slide-img {
-      max-width: 100%; height: auto; margin: 20px auto; border-radius: 8px;
+      max-width: 100%; height: auto; margin: 5px auto; border-radius: 8px;
       border: 1px solid var(--border);
     }
     .muted { color: var(--muted); font-size: clamp(16px, 1.8vw, 20px); }
@@ -128,7 +128,7 @@
           <li>Ejemplos: escribir, traducir, programar, analizar, crear…</li>
         </ul>
       </div>
-      <img class="slide-img" src="img/uso_general_IA.jpg" alt="Collage de usos de IA en 16:9">
+      <img class="slide-img" src="img/uso_general_IA.jpeg" alt="Collage de usos de IA en 16:9">
     </section>
 
     <!-- 3. Lavavajillas (mal vs bien) -->
@@ -137,7 +137,7 @@
       <div class="cols">
         <div>
           <div class="card">
-            <p><b>Mal cargado</b> → resultados irregulares</p>
+            <p><b>Mal cargado</b> → resultado irregular</p>
             <ul class="list">
               <li>Objetivo difuso</li>
               <li>Sin contexto</li>
@@ -148,7 +148,7 @@
         </div>
         <div>
           <div class="card">
-            <p><b>Bien cargado</b> → resultados impecables</p>
+            <p><b>Bien cargado</b> → resultado impecable</p>
             <ul class="list">
               <li>Objetivo claro</li>
               <li>Contexto útil</li>
@@ -174,7 +174,7 @@
           <li><b>6. Itera</b>: “propón 2 mejoras y pregunta”</li>
         </ul>
       </div>
-      <img class="slide-img" src="img/receta_prompt.jpg" alt="Infografía minimal con los 6 pasos del prompt (16:9)">
+      <img class="slide-img" src="img/receta_prompt.jpeg" alt="Infografía minimal con los 6 pasos del prompt (16:9)">
     </section>
 
     <!-- 5. No es un tractor -->
@@ -187,7 +187,7 @@
           <li>Negocio local, estudiantes, mayores, asociaciones…</li>
         </ul>
       </div>
-      <img class="slide-img" src="img/tractor_robot.jpg" alt="Tractor conducido por un robot en amanecer (16:9)">
+      <img class="slide-img" src="img/tractor_robot.jpeg" alt="Tractor conducido por un robot en amanecer (16:9)">
     </section>
 
     <!-- 6. ¿Más tontos o más sabios? -->
@@ -197,10 +197,10 @@
         <ul class="list">
           <li>Solo acelerar lo de siempre → <b>atrofia</b></li>
           <li>Llegar donde no podíamos → <b>aprendizaje</b></li>
-          <li>Mi caso: ahora <b>programo apps</b> que antes solo soñaba</li>
+          <li>¿Cuál es vuestro caso? <b>¿Programar apps?</b> ¿Guía turístico?</li>
         </ul>
       </div>
-      <img class="slide-img" src="img/cerebro_bombilla.jpg" alt="Cerebro se apaga/enciende como bombilla (concepto 16:9)">
+      <img class="slide-img" src="img/cerebro_bombilla.jpeg" alt="Cerebro se apaga/enciende como bombilla (concepto 16:9)">
     </section>
 
     <!-- 7. Rutas por objetivo (A) Estudio -->
@@ -213,7 +213,7 @@
           <li>Prompt: “Actúa como tutor socrático sobre [tema]…”</li>
         </ul>
       </div>
-      <img class="slide-img" src="img/estudio_ia.jpg" alt="Estudio asistido por IA (16:9)">
+      <img class="slide-img" src="img/estudio_ia.jpeg" alt="Estudio asistido por IA (16:9)">
     </section>
 
     <!-- 8. Rutas por objetivo (B) Info con fuentes -->
@@ -226,7 +226,7 @@
           <li>Contrasta y guarda enlaces</li>
         </ul>
       </div>
-      <img class="slide-img" src="img/info_con_fuentes.jpg" alt="Lupa y enlaces verificados (16:9)">
+      <img class="slide-img" src="img/info_con_fuentes.jpeg" alt="Lupa y enlaces verificados (16:9)">
     </section>
 
     <!-- 9. Rutas por objetivo (C) Mini-app -->
@@ -239,7 +239,7 @@
           <li>Persistencia local: <code>localStorage</code></li>
         </ul>
       </div>
-      <img class="slide-img" src="img/mini_app.jpg" alt="UI simple de mini-app en pantalla (16:9)">
+      <img class="slide-img" src="img/mini_app.jpeg" alt="UI simple de mini-app en pantalla (16:9)">
     </section>
 
     <!-- 10. Demo -->
@@ -253,7 +253,17 @@
           <li>4) Iterar: “Añade modo oscuro persistente”</li>
         </ul>
       </div>
-      <img class="slide-img" src="img/demo_flujo.jpg" alt="Flujo paso a paso de la demo (16:9)">
+      <div class="card" style="max-width: 680px;">
+        <p><b>Abre la app en Google AI Studio:</b></p>
+        <p>
+          <a href="https://ai.studio/apps/drive/1CEEj83S0VyTGQFAw8ZOnGK-79vtqOqrz" target="_blank" style="color: var(--accent); text-decoration: underline; word-break: break-all;">
+            https://ai.studio/apps/drive/1CEEj83S0VyTGQFAw8ZOnGK-79vtqOqrz
+          </a>
+        </p>
+        <div class="qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fai.studio%2Fapps%2Fdrive%2F1CEEj83S0VyTGQFAw8ZOnGK-79vtqOqrz" alt="QR a la app en Google AI Studio">
+        </div>
+      </div>
     </section>
 
     <!-- 11. Ética y privacidad -->
