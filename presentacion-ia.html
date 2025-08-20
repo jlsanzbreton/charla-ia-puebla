@@ -6,14 +6,14 @@
   <title>¿Para qué sirve la IA? – Charla Puebla</title>
   <style>
     :root {
-      /* Variables para tema claro */
+      /* Variables tema claro */
       --bg-light: #f6f6f6;
       --fg-light: #0a0a0a;
       --card-light: #fff;
       --border-light: #e5e5e5;
       --accent-light: #1f7aec;
-      
-      /* Variables para tema oscuro */
+
+      /* Variables tema oscuro */
       --bg-dark: #0B0B0B;
       --fg-dark: #F5F5F5;
       --card-dark: #151515;
@@ -29,7 +29,6 @@
       --accent: var(--accent-dark);
       --muted: var(--muted-dark);
     }
-    /* Regla para el modo claro: aplica cuando <html> tiene la clase "light" */
     html.light {
       --bg: var(--bg-light);
       --fg: var(--fg-light);
@@ -37,55 +36,23 @@
       --border: var(--border-light);
       --accent: var(--accent-light);
     }
-
-    /* Transiciones visuales para notar el cambio de tema */
     body, .card, .btn, .theme-toggle {
       transition: background-color 240ms ease, color 240ms ease, border-color 240ms ease;
     }
-
     body {
-      margin: 0;
+      margin: 0; background: var(--bg); color: var(--fg);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
     }
-
-    .deck {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
+    .deck { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; }
     .slide {
-      width: 100%;
-      max-width: 1200px;
-      height: 100vh;
-      padding: 6vh 6vw;
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 2.2vh;
-      text-align: center;
-      box-sizing: border-box;
+      width: 100%; max-width: 1200px; height: 100vh;
+      padding: 6vh 6vw; display: none; flex-direction: column;
+      justify-content: center; gap: 2.2vh; text-align: center; box-sizing: border-box;
     }
-    .slide.active {
-      display: flex;
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(32px, 6vw, 64px);
-      line-height: 1.1;
-    }
-    h2 {
-      margin: 0;
-      font-size: clamp(28px, 4.5vw, 44px);
-      line-height: 1.15;
-      color: var(--accent);
-    }
-    p, li {
-      font-size: clamp(18px, 2.2vw, 28px);
-    }
+    .slide.active { display: flex; }
+    h1 { margin: 0; font-size: clamp(32px, 6vw, 64px); line-height: 1.1; }
+    h2 { margin: 0; font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; color: var(--accent); }
+    p, li { font-size: clamp(18px, 2.2vw, 28px); }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -94,155 +61,256 @@
       margin: auto;
       max-width: 80%;
     }
-    .list {
-      text-align: left;
-      list-style: none;
-      padding: 0;
-    }
-    .list li {
-      margin: 6px 0;
-    }
+    .cols { display: grid; grid-template-columns: 1fr; gap: 14px; align-items: center; }
+    @media (min-width: 900px) { .cols { grid-template-columns: 1fr 1fr; } }
+    .list { text-align: left; list-style: none; padding: 0; }
+    .list li { margin: 6px 0; }
     .qr {
-      width: 240px;
-      height: 240px;
-      border-radius: 12px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: #fff;
+      width: 240px; height: 240px; border-radius: 12px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center; overflow: hidden; background: #fff;
     }
     .nav {
-      position: fixed;
-      bottom: 12px;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      opacity: 0.8;
-      user-select: none;
+      position: fixed; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center;
+      gap: 10px; opacity: 0.8; user-select: none;
     }
     .btn {
-      border: 1px solid var(--border);
-      padding: 10px 14px;
-      border-radius: 12px;
-      background: var(--card);
-      color: var(--fg);
-      cursor: pointer;
+      border: 1px solid var(--border); padding: 10px 14px; border-radius: 12px;
+      background: var(--card); color: var(--fg); cursor: pointer;
     }
-    .btn:hover {
-      filter: brightness(0.95);
-    }
+    .btn:hover { filter: brightness(0.95); }
     .theme-toggle {
-      position: fixed;
-      top: 12px;
-      right: 12px;
-      border: 1px solid var(--border);
-      padding: 8px 12px;
-      border-radius: 12px;
-      background: var(--card);
-      cursor: pointer;
-      z-index: 1000;
-      color: var(--fg);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      position: fixed; top: 12px; right: 12px; border: 1px solid var(--border);
+      padding: 8px 12px; border-radius: 12px; background: var(--card);
+      cursor: pointer; z-index: 1000; color: var(--fg); display: inline-flex; align-items: center; gap: 8px;
     }
-    .theme-toggle:focus {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
+    .theme-toggle:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
     img.slide-img {
-      max-width: 100%;
-      height: auto;
-      margin: 20px auto;
-      border-radius: 8px;
+      max-width: 100%; height: auto; margin: 20px auto; border-radius: 8px;
+      border: 1px solid var(--border);
     }
+    .muted { color: var(--muted); font-size: clamp(16px, 1.8vw, 20px); }
+    .kbd { background:#222; border:1px solid var(--border); border-radius:8px; padding:2px 8px; }
   </style>
 </head>
 <body>
   <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false">Modo Claro</div>
   <div class="deck">
-    <!-- Slide 1: Portada -->
+
+    <!-- 0. Portada -->
     <section class="slide active" data-title="Portada">
       <h1>Inteligencia Artificial<br>en Puebla de Eca</h1>
-      <p>Lavavajillas, no-tractores y cómo llegar más lejos</p>
-      <img class="slide-img" src="https://via.placeholder.com/600x400?text=Portada" alt="Portada">
+      <p class="muted">Lavavajillas, no-tractores y cómo llegar más lejos</p>
+      <img class="slide-img" src="img/portada_IA-puebla.jpeg" alt="Portada: plaza del pueblo con elementos de IA (ilustración 16:9)">
+      <p class="muted">Navega con <span class="kbd">←</span> <span class="kbd">→</span> o clic/tap lateral.</p>
     </section>
-    <!-- Slide 2: ¿Para qué sirve la IA? -->
+
+    <!-- 1. Agenda -->
+    <section class="slide" data-title="Agenda">
+      <h2>Agenda de hoy</h2>
+      <div class="card">
+        <ul class="list">
+          <li>💧 Lavavajillas: cómo “cargar” un buen prompt</li>
+          <li>🚜 No es un tractor: usos (casi) infinitos</li>
+          <li>🧠 ¿Más tontos o más sabios?</li>
+          <li>⚡ Demo: mini-app en 7 minutos</li>
+          <li>🔗 Recursos + QR para llevarte a casa</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2. ¿Para qué sirve la IA? -->
     <section class="slide" data-title="¿Para qué sirve la IA?">
       <h2>¿Para qué sirve la IA?</h2>
       <div class="card">
         <ul class="list">
-          <li>Innovación sin uso definido</li>
-          <li>Como un tractor, pero sin propósito claro</li>
-          <li>Se usa para potenciar casi todo</li>
+          <li>Innovación sin uso único — <b>multiherramienta</b></li>
+          <li>Como la inteligencia humana: <b>se adapta</b> a lo que imagines</li>
+          <li>Ejemplos: escribir, traducir, programar, analizar, crear…</li>
         </ul>
       </div>
-      <img class="slide-img" src="https://via.placeholder.com/600x400?text=IA+Uso" alt="Uso de IA">
+      <img class="slide-img" src="img/uso_general_IA.jpg" alt="Collage de usos de IA en 16:9">
     </section>
-    <!-- Slide 3: ¿La IA nos vuelve más tontos? -->
-    <section class="slide" data-title="Más tontos o más sabios">
+
+    <!-- 3. Lavavajillas (mal vs bien) -->
+    <section class="slide" data-title="Lavavajillas">
+      <h2>La IA es como un <b>lavavajillas</b></h2>
+      <div class="cols">
+        <div>
+          <div class="card">
+            <p><b>Mal cargado</b> → resultados irregulares</p>
+            <ul class="list">
+              <li>Objetivo difuso</li>
+              <li>Sin contexto</li>
+              <li>Sin formato de salida</li>
+            </ul>
+          </div>
+          <img class="slide-img" src="img/lavavajillas_mal.jpeg" alt="Lavavajillas mal cargado (foto 16:9)">
+        </div>
+        <div>
+          <div class="card">
+            <p><b>Bien cargado</b> → resultados impecables</p>
+            <ul class="list">
+              <li>Objetivo claro</li>
+              <li>Contexto útil</li>
+              <li>Formato + criterios de calidad</li>
+            </ul>
+          </div>
+          <img class="slide-img" src="img/lavavajillas_bien.jpeg" alt="Lavavajillas bien cargado (foto 16:9)">
+        </div>
+      </div>
+      <p class="muted">“Cargar bien” = especificar <b>rol, objetivo, contexto, formato, criterios</b>.</p>
+    </section>
+
+    <!-- 4. Receta de prompt -->
+    <section class="slide" data-title="Receta prompt">
+      <h2>Receta rápida de prompt</h2>
+      <div class="card">
+        <ul class="list">
+          <li><b>1. Rol</b>: quién eres (tutor, dev, chef…)</li>
+          <li><b>2. Objetivo</b>: qué quieres y para quién</li>
+          <li><b>3. Contexto</b>: límites, datos, ejemplo local</li>
+          <li><b>4. Formato</b>: tabla, pasos, código, etc.</li>
+          <li><b>5. Criterios</b>: tono, longitud, fuentes</li>
+          <li><b>6. Itera</b>: “propón 2 mejoras y pregunta”</li>
+        </ul>
+      </div>
+      <img class="slide-img" src="img/receta_prompt.jpg" alt="Infografía minimal con los 6 pasos del prompt (16:9)">
+    </section>
+
+    <!-- 5. No es un tractor -->
+    <section class="slide" data-title="No es un tractor">
+      <h2>La IA <b>no</b> es un tractor</h2>
+      <div class="card">
+        <ul class="list">
+          <li>El tractor tiene propósito único</li>
+          <li>La IA es <b>polivalente</b>: descubre nuevos usos</li>
+          <li>Negocio local, estudiantes, mayores, asociaciones…</li>
+        </ul>
+      </div>
+      <img class="slide-img" src="img/tractor_robot.jpg" alt="Tractor conducido por un robot en amanecer (16:9)">
+    </section>
+
+    <!-- 6. ¿Más tontos o más sabios? -->
+    <section class="slide" data-title="Más sabios">
       <h2>¿Nos hace más tontos o más sabios?</h2>
       <div class="card">
         <ul class="list">
-          <li>Uso irresponsable puede atrofiar habilidades</li>
-          <li>Uso creativo fomenta aprendizaje y crecimiento</li>
+          <li>Solo acelerar lo de siempre → <b>atrofia</b></li>
+          <li>Llegar donde no podíamos → <b>aprendizaje</b></li>
+          <li>Mi caso: ahora <b>programo apps</b> que antes solo soñaba</li>
         </ul>
       </div>
-      <img class="slide-img" src="https://via.placeholder.com/600x400?text=Aprendizaje+o+Atrofia" alt="Aprendizaje o Atrofia">
+      <img class="slide-img" src="img/cerebro_bombilla.jpg" alt="Cerebro se apaga/enciende como bombilla (concepto 16:9)">
     </section>
-    <!-- Slide 4: Ejemplos prácticos -->
-    <section class="slide" data-title="Ejemplos">
-      <h2>Ejemplos prácticos</h2>
+
+    <!-- 7. Rutas por objetivo (A) Estudio -->
+    <section class="slide" data-title="Rutas A">
+      <h2>Rutas por objetivo — A) Estudio</h2>
       <div class="card">
         <ul class="list">
-          <li><strong>Google AI Studio</strong> - crear apps con IA</li>
-          <li><strong>NotebookLM</strong> - organizar y analizar datos</li>
+          <li>Tutor IA (modo estudio): plan + ejercicios</li>
+          <li>NotebookLM: aprende con tus PDFs</li>
+          <li>Prompt: “Actúa como tutor socrático sobre [tema]…”</li>
         </ul>
       </div>
-      <img class="slide-img" src="https://via.placeholder.com/600x400?text=Ejemplos" alt="Ejemplos">
+      <img class="slide-img" src="img/estudio_ia.jpg" alt="Estudio asistido por IA (16:9)">
     </section>
-    <!-- Slide 5: Preguntas y participación -->
-    <section class="slide" data-title="Participación">
-      <h2>Preguntas y participación</h2>
+
+    <!-- 8. Rutas por objetivo (B) Info con fuentes -->
+    <section class="slide" data-title="Rutas B">
+      <h2>Rutas por objetivo — B) Info con fuentes</h2>
       <div class="card">
-        <p>¿Qué usos se te ocurren para la IA en tu día a día?</p>
-        <p>¡Comparte tus ideas!</p>
+        <ul class="list">
+          <li>Pregunta → resumen en 5 puntos + 3 URLs</li>
+          <li>Herramientas: buscador con citas</li>
+          <li>Contrasta y guarda enlaces</li>
+        </ul>
       </div>
-      <img class="slide-img" src="https://via.placeholder.com/600x400?text=Participación" alt="Participación">
+      <img class="slide-img" src="img/info_con_fuentes.jpg" alt="Lupa y enlaces verificados (16:9)">
     </section>
-    <!-- Slide 6: Demo y QR -->
+
+    <!-- 9. Rutas por objetivo (C) Mini-app -->
+    <section class="slide" data-title="Rutas C">
+      <h2>Rutas por objetivo — C) Mini-app</h2>
+      <div class="card">
+        <ul class="list">
+          <li>Un solo archivo: <code>index.html</code></li>
+          <li>Funcional: crear/listar/buscar/votar</li>
+          <li>Persistencia local: <code>localStorage</code></li>
+        </ul>
+      </div>
+      <img class="slide-img" src="img/mini_app.jpg" alt="UI simple de mini-app en pantalla (16:9)">
+    </section>
+
+    <!-- 10. Demo -->
     <section class="slide" data-title="Demo">
-      <h2>Demo: Mini-app</h2>
+      <h2>Demo: Mini-app en 7 minutos</h2>
       <div class="card">
-        <p><strong>Prompt:</strong> App de una sola página (HTML+CSS+JS) para un tablón de ideas con categorías, búsqueda, votos y localStorage.</p>
         <ul class="list">
-          <li>1. Abre Google AI Studio</li>
-          <li>2. Pega el prompt y guarda <code>index.html</code></li>
-          <li>3. ¡Listo!</li>
+          <li>1) Abrir AI Studio</li>
+          <li>2) Pegar prompt “Tablón de ideas”</li>
+          <li>3) Guardar <code>index.html</code> y abrir</li>
+          <li>4) Iterar: “Añade modo oscuro persistente”</li>
         </ul>
       </div>
-      <img class="slide-img" src="https://via.placeholder.com/600x400?text=Demo" alt="Demo">
+      <img class="slide-img" src="img/demo_flujo.jpg" alt="Flujo paso a paso de la demo (16:9)">
     </section>
-    <!-- Slide 7: Descargar PDF con presentación original -->
-    <section class="slide" data-title="PDF">
-      <h2>Descarga la Presentación Completa</h2>
+
+    <!-- 11. Ética y privacidad -->
+    <section class="slide" data-title="Ética">
+      <h2>Ética, privacidad y sentido común</h2>
       <div class="card">
-        <p>Obtén la versión completa en PDF con toda la información original.</p>
-        <p><a href="presentacion-original.pdf" target="_blank" style="color: var(--accent); font-size: 1.2em; text-decoration: underline;">Descargar PDF</a></p>
+        <ul class="list">
+          <li>Cita fuentes y contrasta</li>
+          <li>Evita datos sensibles</li>
+          <li>Cuenta separada para pruebas</li>
+        </ul>
       </div>
-      <div class="qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=http://example.com/presentacion-original.pdf" alt="QR para PDF">
-      </div>
+      <img class="slide-img" src="img/etica_privacidad.jpg" alt="Candado y red de nodos (16:9)">
     </section>
+
+    <!-- 12. Recursos + QR -->
+    <section class="slide" data-title="Recursos">
+      <h2>Recursos y descargas</h2>
+      <div class="cols">
+        <div class="card">
+          <p><b>PDF de la charla</b> (con enlaces):</p>
+          <p><a href="Inteligencia%20Artificial%20(IA)%20en%20Puebla%20de%20Eca.pdf" target="_blank" style="color: var(--accent); text-decoration: underline;">Abrir/descargar PDF</a></p>
+          <div class="qr">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fjlsanzbreton.github.io%2Fcharla-ia-puebla%2FInteligencia%2520Artificial%2520%2528IA%2529%2520en%2520Puebla%2520de%2520Eca.pdf" alt="QR para PDF">
+          </div>
+        </div>
+        <div class="card">
+          <p><b>Demo “Tablón de ideas”</b> (GitHub Pages):</p>
+          <p><a href="https://jlsanzbreton.github.io/charla-ia-puebla/" target="_blank" style="color: var(--accent); text-decoration: underline;">Abrir demo</a></p>
+          <div class="qr">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fjlsanzbreton.github.io%2Fcharla-ia-puebla%2F" alt="QR a la demo">
+          </div>
+        </div>
+      </div>
+      <p class="muted">Sigue el enlace o escanea el QR para llevarte todo al móvil.</p>
+    </section>
+
+    <!-- 13. Cierre -->
+    <section class="slide" data-title="Cierre">
+      <h2>Conclusión</h2>
+      <div class="card">
+        <ul class="list">
+          <li>La IA no es un tractor… es un <b>lavavajillas infinito</b></li>
+          <li>Si cargas bien, <b>limpia mundos nuevos</b></li>
+          <li>Úsala para <b>llegar más lejos</b>, no solo para ir más rápido</li>
+        </ul>
+      </div>
+      <p class="muted">Gracias 💙</p>
+    </section>
+
   </div>
+
   <div class="nav">
     <button class="btn" id="prev">← Anterior</button>
     <button class="btn" id="next">Siguiente →</button>
   </div>
+
   <script>
     (function(){
       const slides = Array.from(document.querySelectorAll('.slide'));
@@ -252,36 +320,26 @@
         slides[index].classList.add('active');
         current = index;
       };
-      document.getElementById('next').onclick = () => {
-        if(current < slides.length - 1) showSlide(current + 1);
-      };
-      document.getElementById('prev').onclick = () => {
-        if(current > 0) showSlide(current - 1);
-      };
+      document.getElementById('next').onclick = () => { if(current < slides.length - 1) showSlide(current + 1); };
+      document.getElementById('prev').onclick = () => { if(current > 0) showSlide(current - 1); };
       document.addEventListener('keydown', (e) => {
         if(e.key === 'ArrowRight' && current < slides.length - 1) showSlide(current + 1);
         if(e.key === 'ArrowLeft' && current > 0) showSlide(current - 1);
       });
       document.addEventListener('click', (e) => {
-        // Ignorar clicks sobre controles interactivos para evitar navegación accidental
         if (e.target.closest('.theme-toggle') || e.target.closest('.nav') || e.target.closest('button') || e.target.closest('a')) return;
         const x = e.clientX, w = window.innerWidth;
         if(x > w * 0.6 && current < slides.length - 1) showSlide(current + 1);
         else if(x < w * 0.4 && current > 0) showSlide(current - 1);
       });
-      
-      // Toggle de modo: usar addEventListener, logs y soporte teclado
+
+      // Toggle de tema
       const toggleButton = document.getElementById('themeToggle');
       const setButtonState = (isLight) => {
         toggleButton.setAttribute('aria-pressed', String(isLight));
         toggleButton.textContent = isLight ? 'Modo Oscuro' : 'Modo Claro';
-        console.log('[theme] set to', isLight ? 'light' : 'dark');
       };
-
-      // Inicializar según clase actual
       setButtonState(document.documentElement.classList.contains('light'));
-
-      // Evitar que el click en el toggle burbujee y active la navegación
       toggleButton.addEventListener('click', (e) => {
         e.stopPropagation();
         const isLight = document.documentElement.classList.toggle('light');
@@ -289,13 +347,11 @@
       });
       toggleButton.addEventListener('keydown', (e) => {
         if(e.key === 'Enter' || e.key === ' '){
-          e.preventDefault();
-          e.stopPropagation();
+          e.preventDefault(); e.stopPropagation();
           const isLight = document.documentElement.classList.toggle('light');
           setButtonState(isLight);
         }
       });
-
     })();
   </script>
 </body>
