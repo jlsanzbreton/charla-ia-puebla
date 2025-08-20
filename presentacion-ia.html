@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>¿Para qué sirve la IA? – Charla Puebla</title>
+  <style>
+    :root {
+      /* Variables para tema claro */
+      --bg-light: #f6f6f6;
+      --fg-light: #0a0a0a;
+      --card-light: #fff;
+      --border-light: #e5e5e5;
+      --accent-light: #1f7aec;
+      
+      /* Variables para tema oscuro */
+      --bg-dark: #0B0B0B;
+      --fg-dark: #F5F5F5;
+      --card-dark: #151515;
+      --border-dark: #2A2A2A;
+      --accent-dark: #4FC3F7;
+      --muted-dark: #BDBDBD;
+
+      /* Tema por defecto: oscuro */
+      --bg: var(--bg-dark);
+      --fg: var(--fg-dark);
+      --card: var(--card-dark);
+      --border: var(--border-dark);
+      --accent: var(--accent-dark);
+      --muted: var(--muted-dark);
+    }
+    /* Regla para el modo claro: aplica cuando <html> tiene la clase "light" */
+    html.light {
+      --bg: var(--bg-light);
+      --fg: var(--fg-light);
+      --card: var(--card-light);
+      --border: var(--border-light);
+      --accent: var(--accent-light);
+    }
+
+    /* Transiciones visuales para notar el cambio de tema */
+    body, .card, .btn, .theme-toggle {
+      transition: background-color 240ms ease, color 240ms ease, border-color 240ms ease;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    .deck {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .slide {
+      width: 100%;
+      max-width: 1200px;
+      height: 100vh;
+      padding: 6vh 6vw;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.2vh;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .slide.active {
+      display: flex;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 6vw, 64px);
+      line-height: 1.1;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(28px, 4.5vw, 44px);
+      line-height: 1.15;
+      color: var(--accent);
+    }
+    p, li {
+      font-size: clamp(18px, 2.2vw, 28px);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2vh 2vw;
+      margin: auto;
+      max-width: 80%;
+    }
+    .list {
+      text-align: left;
+      list-style: none;
+      padding: 0;
+    }
+    .list li {
+      margin: 6px 0;
+    }
+    .qr {
+      width: 240px;
+      height: 240px;
+      border-radius: 12px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #fff;
+    }
+    .nav {
+      position: fixed;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0.8;
+      user-select: none;
+    }
+    .btn {
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--card);
+      color: var(--fg);
+      cursor: pointer;
+    }
+    .btn:hover {
+      filter: brightness(0.95);
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: var(--card);
+      cursor: pointer;
+      z-index: 1000;
+      color: var(--fg);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .theme-toggle:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    img.slide-img {
+      max-width: 100%;
+      height: auto;
+      margin: 20px auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false">Modo Claro</div>
+  <div class="deck">
+    <!-- Slide 1: Portada -->
+    <section class="slide active" data-title="Portada">
+      <h1>Inteligencia Artificial<br>en Puebla de Eca</h1>
+      <p>Lavavajillas, no-tractores y cómo llegar más lejos</p>
+      <img class="slide-img" src="https://via.placeholder.com/600x400?text=Portada" alt="Portada">
+    </section>
+    <!-- Slide 2: ¿Para qué sirve la IA? -->
+    <section class="slide" data-title="¿Para qué sirve la IA?">
+      <h2>¿Para qué sirve la IA?</h2>
+      <div class="card">
+        <ul class="list">
+          <li>Innovación sin uso definido</li>
+          <li>Como un tractor, pero sin propósito claro</li>
+          <li>Se usa para potenciar casi todo</li>
+        </ul>
+      </div>
+      <img class="slide-img" src="https://via.placeholder.com/600x400?text=IA+Uso" alt="Uso de IA">
+    </section>
+    <!-- Slide 3: ¿La IA nos vuelve más tontos? -->
+    <section class="slide" data-title="Más tontos o más sabios">
+      <h2>¿Nos hace más tontos o más sabios?</h2>
+      <div class="card">
+        <ul class="list">
+          <li>Uso irresponsable puede atrofiar habilidades</li>
+          <li>Uso creativo fomenta aprendizaje y crecimiento</li>
+        </ul>
+      </div>
+      <img class="slide-img" src="https://via.placeholder.com/600x400?text=Aprendizaje+o+Atrofia" alt="Aprendizaje o Atrofia">
+    </section>
+    <!-- Slide 4: Ejemplos prácticos -->
+    <section class="slide" data-title="Ejemplos">
+      <h2>Ejemplos prácticos</h2>
+      <div class="card">
+        <ul class="list">
+          <li><strong>Google AI Studio</strong> - crear apps con IA</li>
+          <li><strong>NotebookLM</strong> - organizar y analizar datos</li>
+        </ul>
+      </div>
+      <img class="slide-img" src="https://via.placeholder.com/600x400?text=Ejemplos" alt="Ejemplos">
+    </section>
+    <!-- Slide 5: Preguntas y participación -->
+    <section class="slide" data-title="Participación">
+      <h2>Preguntas y participación</h2>
+      <div class="card">
+        <p>¿Qué usos se te ocurren para la IA en tu día a día?</p>
+        <p>¡Comparte tus ideas!</p>
+      </div>
+      <img class="slide-img" src="https://via.placeholder.com/600x400?text=Participación" alt="Participación">
+    </section>
+    <!-- Slide 6: Demo y QR -->
+    <section class="slide" data-title="Demo">
+      <h2>Demo: Mini-app</h2>
+      <div class="card">
+        <p><strong>Prompt:</strong> App de una sola página (HTML+CSS+JS) para un tablón de ideas con categorías, búsqueda, votos y localStorage.</p>
+        <ul class="list">
+          <li>1. Abre Google AI Studio</li>
+          <li>2. Pega el prompt y guarda <code>index.html</code></li>
+          <li>3. ¡Listo!</li>
+        </ul>
+      </div>
+      <img class="slide-img" src="https://via.placeholder.com/600x400?text=Demo" alt="Demo">
+    </section>
+    <!-- Slide 7: Descargar PDF con presentación original -->
+    <section class="slide" data-title="PDF">
+      <h2>Descarga la Presentación Completa</h2>
+      <div class="card">
+        <p>Obtén la versión completa en PDF con toda la información original.</p>
+        <p><a href="presentacion-original.pdf" target="_blank" style="color: var(--accent); font-size: 1.2em; text-decoration: underline;">Descargar PDF</a></p>
+      </div>
+      <div class="qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=http://example.com/presentacion-original.pdf" alt="QR para PDF">
+      </div>
+    </section>
+  </div>
+  <div class="nav">
+    <button class="btn" id="prev">← Anterior</button>
+    <button class="btn" id="next">Siguiente →</button>
+  </div>
+  <script>
+    (function(){
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      let current = 0;
+      const showSlide = (index) => {
+        slides.forEach(s => s.classList.remove('active'));
+        slides[index].classList.add('active');
+        current = index;
+      };
+      document.getElementById('next').onclick = () => {
+        if(current < slides.length - 1) showSlide(current + 1);
+      };
+      document.getElementById('prev').onclick = () => {
+        if(current > 0) showSlide(current - 1);
+      };
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'ArrowRight' && current < slides.length - 1) showSlide(current + 1);
+        if(e.key === 'ArrowLeft' && current > 0) showSlide(current - 1);
+      });
+      document.addEventListener('click', (e) => {
+        // Ignorar clicks sobre controles interactivos para evitar navegación accidental
+        if (e.target.closest('.theme-toggle') || e.target.closest('.nav') || e.target.closest('button') || e.target.closest('a')) return;
+        const x = e.clientX, w = window.innerWidth;
+        if(x > w * 0.6 && current < slides.length - 1) showSlide(current + 1);
+        else if(x < w * 0.4 && current > 0) showSlide(current - 1);
+      });
+      
+      // Toggle de modo: usar addEventListener, logs y soporte teclado
+      const toggleButton = document.getElementById('themeToggle');
+      const setButtonState = (isLight) => {
+        toggleButton.setAttribute('aria-pressed', String(isLight));
+        toggleButton.textContent = isLight ? 'Modo Oscuro' : 'Modo Claro';
+        console.log('[theme] set to', isLight ? 'light' : 'dark');
+      };
+
+      // Inicializar según clase actual
+      setButtonState(document.documentElement.classList.contains('light'));
+
+      // Evitar que el click en el toggle burbujee y active la navegación
+      toggleButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isLight = document.documentElement.classList.toggle('light');
+        setButtonState(isLight);
+      });
+      toggleButton.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          e.stopPropagation();
+          const isLight = document.documentElement.classList.toggle('light');
+          setButtonState(isLight);
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>
